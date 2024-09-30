@@ -1,0 +1,32 @@
+function checkPasswordStrength(password) {
+    let hasUpper = false;
+    let hasLower = false;
+    let hasDigit = false;
+    let hasLength = false;
+
+    // Перевірка довжини паролю
+    if (password.length >= 8) {
+        hasLength = true;
+    }
+
+    // Перевірка символів паролю
+    for (let char of password) {
+        if (char >= 'A' && char <= 'Z') {
+            hasUpper = true;
+        } else if (char >= 'a' && char <= 'z') {
+            hasLower = true;
+        } else if (char >= '0' && char <= '9') {
+            hasDigit = true;
+        }
+    }
+
+    // Перевірка, чи є всі необхідні вимоги
+    if (hasLength && hasUpper && hasLower && hasDigit) {
+        return "Strong";
+    } else {
+        return "Weak";
+    }
+}
+
+const result = checkPasswordStrength("hkkjhsQ12");
+console.log(result);  // Виведе або "Weak", або "Strong"
